@@ -19,4 +19,25 @@ Flags:
 
 Use "hgd [command] --help" for more information about a command.
 
-```` 
+````
+
+## Example
+Export all dashboard from a folder.
+````
+hgd export -a ./dashbaords -t token
+````
+
+Export one dashboard.
+````
+hgd export ./dashbaords/test.json -t token
+````
+
+Import dashboard by name to an output directory.
+````
+hgd import a-dashboard -o ./dashboards -t token
+````
+
+Delete a dashboard by name.
+````
+hgd delete a-dashbaord -t token
+````
