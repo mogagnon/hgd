@@ -15,12 +15,24 @@ type Response struct {
 }
 
 func (response *Response) HandleApiError(message string) error {
-	if response.StatusCode != 200 {
+	if !isSuccessfulResponse(response.StatusCode) {
 		var apiError Error
-		json.NewDecoder(response.Body).Decode(&apiError)
+		_ = json.NewDecoder(response.Body).Decode(&apiError)
 
 		return fmt.Errorf("%s: %d %s", message, response.StatusCode, apiError.Message)
 	}
 
 	return nil
+}
+
+func isSuccessfulResponse(statusCode int) bool {
+	var successCode = []int{200, 201, 202, 204}
+
+	for _, code := range successCode {
+		if statusCode == code {
+			return true
+		}
+	}
+
+	return false
 }

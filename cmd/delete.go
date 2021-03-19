@@ -20,7 +20,7 @@ func init() {
 }
 
 func deleteDashboard(name string) error {
-	client := api.CreateHgClient(Token)
+	client := api.CreateHgClientV2(Token)
 
 	err := client.Delete(name)
 

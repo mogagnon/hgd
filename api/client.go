@@ -17,3 +17,7 @@ func (client *HgClient) GetResource(resource string) string {
 func (client *HgClient) GetResourceById(resource string, id string) string {
 	return fmt.Sprintf("%s%s/%s", client.Url, resource, id)
 }
+
+func (client *HgClient) GetEvent() string {
+	return fmt.Sprintf("%s/graphite/events/", client.Url)
+}
