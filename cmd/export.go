@@ -36,7 +36,7 @@ func init() {
 func export(file string) error {
 	var err error
 
-	client := api.CreateHgClient(Token)
+	client := api.CreateHgClientV2(Token)
 
 	if directory {
 		filepath.Walk(file, func(filePath string, info os.FileInfo, err error) error {

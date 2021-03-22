@@ -32,7 +32,7 @@ func init() {
 }
 
 func importDashboard(outputFile string, id string) error {
-	client := api.CreateHgClient(Token)
+	client := api.CreateHgClientV2(Token)
 
 	dashboard, err := client.Get(id)
 

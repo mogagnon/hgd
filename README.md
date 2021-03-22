@@ -8,6 +8,7 @@ Usage:
   hgd [command]
 
 Available Commands:
+  create      Create an event.
   delete      Delete a Dashboard.
   export      Export a dashboard to Hosted Graphite from a json file. Will update if the dashboard already exist.
   help        Help about any command
@@ -18,6 +19,7 @@ Flags:
   -t, --token string   The token for Hosted Graphite.
 
 Use "hgd [command] --help" for more information about a command.
+
 
 ````
 
@@ -41,3 +43,8 @@ Delete a dashboard by name.
 ````
 hgd delete a-dashbaord -t token
 ````
+
+Create an event
+```
+hgd create event-description event-tag -t token
+```

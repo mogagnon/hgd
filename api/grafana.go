@@ -78,9 +78,13 @@ func (client *HgClient) Exist(name string) bool {
 	response, err := http.Get(url)
 	defer response.Body.Close()
 
+	var value interface{}
+
 	if err != nil {
 		return false
 	}
+
+	json.NewDecoder(response.Body).Decode(&value)
 
 	return response.StatusCode != 404
 }
