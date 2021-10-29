@@ -101,7 +101,7 @@ func (client *HgClient) Get(name string) (dash *DashboardTemplate, err error) {
 	response, err := http.Get(url)
 
 	if err != nil {
-		return nil, fmt.Errorf("get dashboard %s: %v", name, err)
+		return nil, fmt.Errorf("error doing GET request: %v", err)
 	}
 
 	defer response.Body.Close()
