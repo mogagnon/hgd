@@ -59,6 +59,11 @@ func (client *HgClient) Update(dashboardTemplate *DashboardTemplate) error {
 	req, err := http.NewRequest("PUT", url, bytes.NewBuffer(requestBody))
 
 	response, err := client.HttpClient.Do(req)
+
+	if err != nil {
+		return fmt.Errorf("error doing PUT request: %v", err)
+	}
+
 	defer response.Body.Close()
 
 	apiResponse := Response{response}
@@ -94,6 +99,11 @@ func (client *HgClient) Get(name string) (dash *DashboardTemplate, err error) {
 	url := client.GetResourceById(dashboard, name)
 
 	response, err := http.Get(url)
+
+	if err != nil {
+		return nil, fmt.Errorf("get dashboard %s: %v", name, err)
+	}
+
 	defer response.Body.Close()
 
 	apiResponse := Response{response}
@@ -114,6 +124,11 @@ func (client *HgClient) Delete(id string) error {
 
 	req, err := http.NewRequest("DELETE", url, nil)
 	response, err := client.HttpClient.Do(req)
+
+	if err != nil {
+		return fmt.Errorf("error doing DELETE request: %v", err)
+	}
+
 	defer response.Body.Close()
 
 	apiResponse := Response{response}
